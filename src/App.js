@@ -6,7 +6,7 @@ import './App.css';
 import ABI from "./ABI.json";
 
 // Replace with your contract's address.
-const contractAddress = "0x3aa969d343bd6ae66c4027bb61a382dc96e88150";
+const contractAddress = "0x00abaa93faf8fdc4f382135a7a56f9cf7c3edd21";
 
 class App extends React.Component {
   constructor(props) {
@@ -48,8 +48,8 @@ class App extends React.Component {
     const web3 = new Web3(web3Provider);
 
     const networkID = await web3.eth.net.getId();
-    if (networkID !== 42) {
-      this.logError("Please set your network to Kovan.");
+    if (networkID !== 56) {
+      this.logError("Please set your network to Binance Smart Chain Mainnet.");
       return;
     }
 
@@ -70,8 +70,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <p>Balance: {balance} BTC</p>
-        <p><button onClick={() => this.deposit().catch(this.logError)}>Deposit 0.001 BTC</button></p>
-        <p><button onClick={() => this.withdraw().catch(this.logError)}>Withdraw {balance} BTC</button></p>
+        <p><button onClick={() => this.deposit().catch(this.logError)}>Deposit 0.001 wMUE</button></p>
+        <p><button onClick={() => this.withdraw().catch(this.logError)}>Withdraw {balance} wMUE</button></p>
         <p>{message}</p>
         {error ? <p style={{ color: "red" }}>{error}</p> : null}
       </div>
@@ -127,7 +127,7 @@ class App extends React.Component {
         // Web3 provider for submitting mint to Ethereum
         web3Provider: web3.currentProvider,
       }).result();
-      this.log(`Deposited ${amount} BTC.`);
+      this.log(`Deposited ${amount} wMUE.`);
     } catch (error) {
       // Handle error
       this.logError(error);
@@ -138,7 +138,7 @@ class App extends React.Component {
     const { web3, gatewayJS, balance } = this.state;
 
     const amount = balance;
-    const recipient = prompt("Enter BTC recipient:");
+    const recipient = prompt("Enter wMUE recipient:");
 
     // You can surround shiftOut with a try/catch to handle errors.
 
@@ -164,7 +164,7 @@ class App extends React.Component {
       web3Provider: web3.currentProvider,
     }).result();
 
-    this.log(`Withdrew ${amount} BTC to ${recipient}.`);
+    this.log(`Withdrew ${amount} wMUE to ${recipient}.`);
   }
 
   recoverTransfers = async () => {
