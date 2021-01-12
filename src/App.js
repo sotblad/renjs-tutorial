@@ -15,7 +15,7 @@ class App extends React.Component {
       balance: 0,
       message: "",
       error: "",
-      gatewayJS: new GatewayJS("testnet"),
+      gatewayJS: new GatewayJS("mainnet"),
     }
   }
 
